@@ -1,6 +1,6 @@
 {
   "name": "ss15-the-keks",
-  "root": "app",
+  "root": ".",
   "clean_urls": true,
   "error_page": "error.html"
 }
