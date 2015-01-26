@@ -28,7 +28,7 @@ CellSprite.prototype.update = function() {
 		if (cell.type != TYPE.OCEAN) {
 
 			var numberOfSides = 6,
-		    size = w/2,
+		    size = w/2 - 5/2,
 		    Xcenter = w/2,
 		    Ycenter = w/2;
 

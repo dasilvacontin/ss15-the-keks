@@ -1,4 +1,14 @@
 
+var stats = new Stats();
+stats.setMode(0); // 0: fps, 1: ms
+
+// align top-left
+stats.domElement.style.position = 'absolute';
+stats.domElement.style.right = '0px';
+stats.domElement.style.bottom = '0px';
+
+document.body.appendChild( stats.domElement );
+
 var renderer = new PIXI.WebGLRenderer(800, 600, {resolution:DPXRATIO});
 document.body.appendChild(renderer.view);
 
@@ -36,7 +46,7 @@ mapSprite.sprite.scale.x = mapSprite.sprite.scale.y = scale;
 requestAnimationFrame(animate);
 function animate() {
 
-	requestAnimationFrame(animate);
+	stats.begin();
 
 	if (keyboard.char('W')) vy += SCROLL_ACC;
 	if (keyboard.char('S')) vy -= SCROLL_ACC;
@@ -58,4 +68,8 @@ function animate() {
 	mapPosition.y = Math.floor(mapy);
 
     renderer.render(stage);
+
+    stats.end();
+
+    requestAnimationFrame(animate);
 }
