@@ -23,12 +23,33 @@ CellSprite.prototype.update = function() {
 		var h = CELL_HEIGHT;
 		c.width = w;
 		c.height = h;
-		ctx.fillStyle = COLOR.CELL[cell.type];
-		ctx.strokeStyle = COLOR.PLAYER[cell.player];
-		ctx.lineWidth = 2;
-		ctx.rect(0,0,w,h);
-		ctx.fill();
-		if (cell.type != TYPE.OCEAN) ctx.stroke();
+
+		if (cell.type != TYPE.OCEAN) {
+
+			var numberOfSides = 6,
+		    size = w/2,
+		    Xcenter = w/2,
+		    Ycenter = w/2;
+
+			ctx.beginPath();
+			ctx.moveTo(Xcenter +  size * Math.cos(0), Ycenter +  size *  Math.sin(0));          
+
+			for (var i = 1; i <= numberOfSides; ++i) {
+			    ctx.lineTo(
+			    	Xcenter + size * Math.cos(i * 2 * Math.PI / numberOfSides),
+			    	Ycenter + size * Math.sin(i * 2 * Math.PI / numberOfSides)
+			    );
+			}
+
+			ctx.fillStyle = COLOR.CELL[cell.type];
+			if (cell.player > -1) ctx.strokeStyle = COLOR.PLAYER[cell.player];
+			else ctx.strokeStyle = '#9EC972';
+			ctx.lineWidth = 5;
+			ctx.fill();
+			ctx.stroke();
+
+		}
+
 		var texture = PIXI.Texture.fromCanvas(c);
 		CellSpriteCache[id] = texture;
 	}

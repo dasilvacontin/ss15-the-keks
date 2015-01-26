@@ -35,14 +35,16 @@ Map.prototype.drop = function(i, j, n) {
 	var cell = this.cells[i][j];
 	if (cell.type != TYPE.OCEAN) return;
 
-	var nn = n/5;
+	var nn = n/3;
 	var rand = Math.random();
 	if (rand < nn/(nn+1)) return;
 
+	var rand = Math.random();
+
 	//cell type
 	var type;
-	if (rand < 0.8) type = TYPE.PLAIN;
-	else if (rand < 0.9) type = TYPE.WHEAT;
+	if (rand < 0.85) type = TYPE.PLAIN;
+	else if (rand < 0.925) type = TYPE.WHEAT;
 	else type = TYPE.FOREST;
 	cell.type = type;
 

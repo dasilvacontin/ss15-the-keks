@@ -24,8 +24,9 @@ COLOR.PLAYER = [
 	,'#4D84FF' //sort of a blue
 ];
 
-CELL_WIDTH = 125;
-CELL_HEIGHT = 125;
+CELL_WIDTH = 150;
+CELL_HEIGHT = 150;
+APOTHEM = Math.floor( (CELL_WIDTH/2) * Math.cos(Math.PI/6) );
 DPXRATIO = window.devicePixelRatio;
 
 // TERRAIN_GENERATOR
