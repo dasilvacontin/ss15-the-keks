@@ -1,7 +1,7 @@
 
 // CellSprite.js
 
-var CellSpriteCache = {};
+var CellTextureCache = {};
 
 function CellSprite(cell) {
 	this.cell = cell;
@@ -9,11 +9,12 @@ function CellSprite(cell) {
 	this.update();
 }
 
+// TODO: very ugly function ermaherd yuno OO
 CellSprite.prototype.update = function() {
 
 	var cell = this.cell;
 	var id = cell.type + cell.city + cell.player;
-	var texture = CellSpriteCache[id];
+	var texture = CellTextureCache[id];
 
 	if (!texture) {
 		console.log(id);
@@ -48,10 +49,32 @@ CellSprite.prototype.update = function() {
 			ctx.fill();
 			ctx.stroke();
 
+			if (this.cell.city) {
+
+				var numberOfSides = 6,
+			    size = w/3,
+			    Xcenter = w/2,
+			    Ycenter = w/2;
+
+				ctx.beginPath();
+				ctx.moveTo(Xcenter +  size * Math.cos(0), Ycenter +  size *  Math.sin(0));          
+
+				for (var i = 1; i <= numberOfSides; ++i) {
+				    ctx.lineTo(
+				    	Xcenter + size * Math.cos(i * 2 * Math.PI / numberOfSides),
+				    	Ycenter + size * Math.sin(i * 2 * Math.PI / numberOfSides)
+				    );
+				}
+
+				ctx.fillStyle = COLOR.PLAYER[cell.player];
+				ctx.fill();
+
+			}
+
 		}
 
 		var texture = PIXI.Texture.fromCanvas(c);
-		CellSpriteCache[id] = texture;
+		CellTextureCache[id] = texture;
 	}
 
 	this.sprite.setTexture(texture);

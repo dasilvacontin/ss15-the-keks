@@ -37,7 +37,6 @@ requestAnimationFrame(animate);
 function animate() {
 
 	requestAnimationFrame(animate);
-	mapSprite.generalUpdate();
 
 	if (keyboard.char('W')) vy += SCROLL_ACC;
 	if (keyboard.char('S')) vy -= SCROLL_ACC;
