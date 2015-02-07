@@ -1,0 +1,20 @@
+{
+  "name": "ss15-the-keks",
+  "version": "0.0.0",
+  "homepage": "https://github.com/dasilvacontin/ss15-the-keks",
+  "authors": [
+    "David Da Silva Contín"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "chance": "~0.7.3"
+  }
+}
